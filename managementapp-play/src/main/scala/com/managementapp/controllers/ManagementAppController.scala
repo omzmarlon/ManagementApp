@@ -6,7 +6,7 @@ import play.Configuration
 
 @Singleton
 class ManagementAppController @Inject() (configuration: Configuration) extends Controller {
-  def index = Action { request =>
-    Ok("abc")
+  def index = Action { implicit request =>
+    Ok(views.html.index())
   }
 }
