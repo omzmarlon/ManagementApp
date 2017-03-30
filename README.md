@@ -2,4 +2,4 @@
 
 Angular2  +  Scala Play
 
-sbt "project management_app" run
+sbt "project managementapp_play" run
