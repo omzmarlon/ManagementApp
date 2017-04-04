@@ -1,4 +1,4 @@
-package com.managementapp.profile
+package com.managementapp.controllers.profile
 
 /**
   * Created by omzmarlon on 2017-03-29.

@@ -15,6 +15,7 @@ lazy val managementapp_play = (project in file("./managementapp-play"))
   //this module will have the root controllers
   .settings(commonBuildSettings: _*)
   .settings(libraryDependencies ++= playDeps)
+  .settings(libraryDependencies ++= playSlickDeps)
   .settings(libraryDependencies += guice)
   .settings(
     //makes play to find source files in /src folder instead of /app folder
@@ -48,6 +49,7 @@ lazy val quiz_play = (project in file("./quiz-play"))
   //this module contains all the play, controller stuff
   .settings(commonBuildSettings: _*)
   .settings(libraryDependencies ++= playDeps)
+  .settings(libraryDependencies ++= playSlickDeps)
   .settings(libraryDependencies += guice)
   .settings(
     //makes play to find source files in /src folder instead of /app folder
@@ -71,6 +73,7 @@ lazy val profile_play = (project in file("./profile-play"))
   //this module contains all the play, controller stuff
   .settings(commonBuildSettings: _*)
   .settings(libraryDependencies ++= playDeps)
+  .settings(libraryDependencies ++= playSlickDeps)
   .settings(libraryDependencies += guice)
   .settings(
     //makes play to find source files in /src folder instead of /app folder
