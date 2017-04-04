@@ -11,9 +11,6 @@ object Dependencies {
     "mysql" % "mysql-connector-java" % "5.1.39",
     "com.typesafe.play" %% "play-slick" % "2.0.0",
     "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0"
-//    "com.typesafe.slick" %% "slick" % "3.1.0",
-//    "org.slf4j" % "slf4j-nop" % "1.6.4",
-//    "com.typesafe.slick" %% "slick-hikaricp" % "3.1.0"
   )
   val guice = "com.google.inject" % "guice" % "3.0"
   val playDeps = Seq(

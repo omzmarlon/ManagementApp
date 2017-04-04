@@ -11,7 +11,7 @@ lazy val commonBuildSettings = Seq(
   scalaVersion := "2.11.7"
 )
 
-lazy val managementapp_play = (project in file("./managementapp-play"))
+lazy val managementapp_play = (project in file("./play"))
   //this module will have the root controllers
   .settings(commonBuildSettings: _*)
   .settings(libraryDependencies ++= playDeps)
@@ -39,51 +39,9 @@ lazy val managementapp_play = (project in file("./managementapp-play"))
     )
   )
 
-
-lazy val quiz_core = (project in file("./quiz-core"))
+lazy val managementapp_core = (project in file("./core"))
   //core module contains business logic and db access
   .settings(commonBuildSettings: _*)
 
-
-lazy val quiz_play = (project in file("./quiz-play"))
-  //this module contains all the play, controller stuff
+lazy val managementapp_models = (project in file("./models"))
   .settings(commonBuildSettings: _*)
-  .settings(libraryDependencies ++= playDeps)
-  .settings(libraryDependencies ++= playSlickDeps)
-  .settings(libraryDependencies += guice)
-  .settings(
-    //makes play to find source files in /src folder instead of /app folder
-    playMonitoredFiles ++= (sourceDirectories in (Compile, TwirlKeys.compileTemplates)).value
-  )
-  .enablePlugins(PlayScala)
-  .disablePlugins(PlayLayoutPlugin)
-  .settings(
-    libraryDependencies += "com.trueaccord.scalapb" %% "compilerplugin" % "0.5.41",
-    PB.targets in Compile := Seq(
-      PB.gens.java -> ((sourceDirectory in Compile).value / "protobuf_generated")
-    )
-  )
-
-
-lazy val profile_core = (project in file("./profile-core"))
-  //core module contains business logic and db access
-  .settings(commonBuildSettings: _*)
-
-lazy val profile_play = (project in file("./profile-play"))
-  //this module contains all the play, controller stuff
-  .settings(commonBuildSettings: _*)
-  .settings(libraryDependencies ++= playDeps)
-  .settings(libraryDependencies ++= playSlickDeps)
-  .settings(libraryDependencies += guice)
-  .settings(
-    //makes play to find source files in /src folder instead of /app folder
-    playMonitoredFiles ++= (sourceDirectories in (Compile, TwirlKeys.compileTemplates)).value
-  )
-  .enablePlugins(PlayScala)
-  .disablePlugins(PlayLayoutPlugin)
-  .settings(
-    libraryDependencies += "com.trueaccord.scalapb" %% "compilerplugin" % "0.5.41",
-    PB.targets in Compile := Seq(
-      PB.gens.java -> ((sourceDirectory in Compile).value / "protobuf_generated")
-    )
-  )
