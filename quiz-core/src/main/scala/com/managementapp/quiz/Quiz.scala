@@ -1,4 +1,4 @@
-package com.managementapp.controllers.quiz
+package com.managementapp.quiz
 
 /**
   * Created by omzmarlon on 2017-03-29.
