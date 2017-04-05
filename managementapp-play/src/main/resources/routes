@@ -1,3 +1,0 @@
-GET         /                       com.managementapp.controllers.ManagementAppController.index
-
-GET     /assets/*file                  controllers.ExternalAssets.at(path="../web", file)
