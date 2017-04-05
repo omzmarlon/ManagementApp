@@ -42,6 +42,3 @@ lazy val managementapp_play = (project in file("./play"))
 lazy val managementapp_core = (project in file("./core"))
   //core module contains business logic and db access
   .settings(commonBuildSettings: _*)
-
-lazy val managementapp_models = (project in file("./models"))
-  .settings(commonBuildSettings: _*)
