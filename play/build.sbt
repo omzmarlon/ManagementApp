@@ -1,0 +1,1 @@
+name := """ManagementApp-Play"""
