@@ -1,7 +1,7 @@
 import play.sbt.PlayImport.PlayKeys
 import PlayKeys.playMonitoredFiles
 import play.twirl.sbt.Import.TwirlKeys
-import sbt.Keys.{sourceDirectories, sourceDirectory}
+import sbt.Keys.{sourceDirectories, sourceDirectory, unmanagedSourceDirectories}
 import sbt._
 import sbtprotoc.ProtocPlugin.autoImport.PB
 
@@ -20,7 +20,8 @@ object Web {
     //http://dcode.io/protobuf.js/
     PB.targets in Compile := Seq(
       PB.gens.java -> ((sourceDirectory in Compile).value / "protobuf_generated")
-    )
+    ),
+    unmanagedSourceDirectories in Compile += ((sourceDirectory in Compile).value / "protobuf_generated")
   )
 
 }
