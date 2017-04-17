@@ -20,8 +20,16 @@ object Dependencies {
     "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0"
   )
 
+
   val protobuf : ModuleID = "com.trueaccord.scalapb" %% "compilerplugin" % "0.5.41"
+  val protobufUtil: ModuleID = "com.google.protobuf" % "protobuf-java-util" % "3.2.0"
+
+  // java JWT library
+  val javaJWT: ModuleID = "io.jsonwebtoken" % "jjwt" % "0.7.0"
+
+  //java library for encryption
+  val jasypt: ModuleID = "org.jasypt" % "jasypt" % "1.9.2"
 
   // dependency composition for modules
-  val managementAppPlayDependencies : Seq[ModuleID] = (guice +: playFramework) ++ playSlick :+ protobuf
+  val managementAppPlayDependencies : Seq[ModuleID] = ((((guice +: playFramework) ++ playSlick :+ protobuf) :+ javaJWT) :+ jasypt) :+ protobufUtil
 }

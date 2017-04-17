@@ -1,0 +1,7 @@
+syntax = "proto3";
+package com.managementapp.transfers;
+
+message AccountDTO {
+    string email = 1;
+    string password = 2;
+}
