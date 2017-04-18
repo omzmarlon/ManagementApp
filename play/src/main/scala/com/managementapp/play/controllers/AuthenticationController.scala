@@ -1,12 +1,11 @@
-package com.managementapp.authentication.controllers
+package com.managementapp.play.controllers
 
-import play.api.mvc.{Action, AnyContent, Controller}
-import com.managementapp.common.actions.AuthenticatedAction
 import com.google.inject.Inject
-import com.managementapp.common.util.ProtobufUtil
-import com.managementapp.transfers.Authentication.AccountDTO
-import com.managementapp.authentication.services.AuthenticationService
-import com.managementapp.common.services.UserService
+import com.managementapp.play.actions.AuthenticatedAction
+import com.managementapp.services.authentication.AuthenticationService
+import com.managementapp.services.common.{ProtobufUtil, UserService}
+import play.api.mvc.{Action, AnyContent, Controller}
+import com.managementapp.transfers.Authentication._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 class AuthenticationController @Inject() (authService: AuthenticationService, userService: UserService) extends Controller with ProtobufUtil {

@@ -1,8 +1,8 @@
-package com.managementapp.authentication.services
+package com.managementapp.services.authentication
 
 import com.google.inject.Inject
-import com.managementapp.authentication.dao.UsersAsyncDAO
-import com.managementapp.authentication.models.User
+import com.managementapp.database.dao.UsersAsyncDAO
+import com.managementapp.database.models.User
 import org.jasypt.util.password.BasicPasswordEncryptor
 
 import scala.concurrent.ExecutionContext.Implicits.global

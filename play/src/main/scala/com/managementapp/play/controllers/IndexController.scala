@@ -1,4 +1,4 @@
-package com.managementapp.controllers
+package com.managementapp.play.controllers
 
 import com.google.inject.{Inject, Singleton}
 import play.Configuration

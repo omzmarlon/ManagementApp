@@ -1,4 +1,4 @@
-package com.managementapp.authentication.services
+package com.managementapp.services.authentication
 
 import java.util.{Calendar, Date}
 

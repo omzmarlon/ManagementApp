@@ -1,9 +1,10 @@
-package com.managementapp.common.services
+package com.managementapp.services.common
 
 import com.google.inject.Inject
-import com.managementapp.authentication.dao.UsersAsyncDAO
-import com.managementapp.authentication.models.User
-import com.managementapp.authentication.services.AuthenticationService
+import com.managementapp.database.dao.UsersAsyncDAO
+import com.managementapp.database.models.User
+import com.managementapp.services.authentication.AuthenticationService
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}
 

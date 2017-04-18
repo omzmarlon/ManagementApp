@@ -1,7 +1,7 @@
-package com.managementapp.common.util
+package com.managementapp.services.common
 
-import com.google.protobuf.util.JsonFormat
 import com.google.protobuf.Message
+import com.google.protobuf.util.JsonFormat
 import play.api.mvc.{AnyContent, Request}
 
 
