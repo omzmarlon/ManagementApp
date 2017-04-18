@@ -1,10 +1,11 @@
-package com.managementapp.common.actions
+package com.managementapp.play.actions
 
-import com.managementapp.common.requests.AuthenticatedRequest
+import com.managementapp.play.requests.AuthenticatedRequest
+import com.managementapp.services.authentication.AuthenticationService
 import play.api.mvc.{ActionBuilder, Request, Result, Results}
 import play.mvc.Http
+
 import scala.concurrent.Future
-import com.managementapp.authentication.services.AuthenticationService
 
 
 /**

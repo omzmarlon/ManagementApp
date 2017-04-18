@@ -1,7 +1,7 @@
-package com.managementapp.authentication.models
+package com.managementapp.database.models
 
-import slick.lifted.Tag
 import slick.driver.MySQLDriver.api._
+import slick.lifted.Tag
 
 
 case class User(email: String, password: String)

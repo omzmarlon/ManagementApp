@@ -1,6 +1,6 @@
-package com.managementapp.common.requests
+package com.managementapp.play.requests
 
-import com.managementapp.authentication.models.User
+import com.managementapp.database.models.User
 import play.api.mvc.{Request, WrappedRequest}
 
 import scala.concurrent.Future

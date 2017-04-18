@@ -1,11 +1,8 @@
-package com.managementapp.authentication.services
+package com.managementapp.services.authentication
 
-import java.util.Calendar
-
-import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
 import com.google.inject.{Inject, Singleton}
-import com.managementapp.authentication.models.User
+import com.managementapp.database.models.User
+import io.jsonwebtoken.{Jwts, SignatureAlgorithm}
 
 import scala.util.{Failure, Success, Try}
 

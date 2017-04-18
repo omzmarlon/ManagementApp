@@ -1,8 +1,9 @@
-package com.managementapp.common.util
+package com.managementapp.services.common
 
 import play.api.db.slick.DatabaseConfigProvider
 import slick.dbio.DBIO
 import slick.driver.JdbcProfile
+
 import scala.concurrent.Future
 
 

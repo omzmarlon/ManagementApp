@@ -1,6 +1,6 @@
-GET     /                           com.managementapp.controllers.IndexController.index
+GET     /                           com.managementapp.play.controllers.IndexController.index
 
 GET     /assets/*file               controllers.ExternalAssets.at(path="../web", file)
-POST     /auth/login                 com.managementapp.authentication.controllers.AuthenticationController.login
-POST     /auth/create                com.managementapp.authentication.controllers.AuthenticationController.createAccount
-GET     /test                      com.managementapp.authentication.controllers.AuthenticationController.sampleActionThatRequiresAuth
+POST     /auth/login                 com.managementapp.play.controllers.AuthenticationController.login
+POST     /auth/create                com.managementapp.play.controllers.AuthenticationController.createAccount
+GET     /test                      com.managementapp.play.controllers.AuthenticationController.sampleActionThatRequiresAuth
