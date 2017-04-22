@@ -3,7 +3,7 @@ package com.managementapp.database.models
 import java.sql.Timestamp
 
 
-case class StuentsWorkOnQuizes (
+case class StudentsWorkOnQuizes(
                                  userId: Long,
                                  quizId: Long,
                                  grade: Int,

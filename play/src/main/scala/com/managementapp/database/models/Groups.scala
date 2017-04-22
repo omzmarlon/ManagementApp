@@ -1,5 +1,5 @@
 package com.managementapp.database.models
 
-import java.sql.Date
+import java.sql.Timestamp
 
-case class Groups (id: Long, groupName: String, startAt: Date, endAt: Date)
+case class Groups (id: Long, groupName: String, startAt: Timestamp, endAt: Timestamp)

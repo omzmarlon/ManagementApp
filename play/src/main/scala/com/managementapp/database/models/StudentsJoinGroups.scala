@@ -1,5 +1,5 @@
 package com.managementapp.database.models
 
-import java.sql.Date
+import java.sql.Timestamp
 
-case class StudentsJoinGroups (userId: Long, groupId: Long, joinAt: Date)
+case class StudentsJoinGroups (userId: Long, groupId: Long, joinAt: Timestamp)
