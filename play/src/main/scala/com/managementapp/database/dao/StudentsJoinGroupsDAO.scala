@@ -1,7 +1,5 @@
 package com.managementapp.database.dao
 
-import java.sql.Timestamp
-
 import com.managementapp.database.models.StudentsJoinGroups
 import slick.driver.MySQLDriver.api._
 
@@ -9,7 +7,7 @@ class StudentsJoinGroupsTable(tag: Tag) extends Table[StudentsJoinGroups](tag, "
   // scalastyle:off public.methods.have.type
   def groupId = column[Long]("GROUP_ID")
   def userId = column[Long]("USER_ID")
-  def joinAt = column[Timestamp]("JOIN_AT")
+  def joinAt = column[Long]("JOIN_AT")
   def * = (userId, groupId, joinAt) <> (StudentsJoinGroups.tupled, StudentsJoinGroups.unapply)
 
   private val groups = TableQuery[GroupsTable]

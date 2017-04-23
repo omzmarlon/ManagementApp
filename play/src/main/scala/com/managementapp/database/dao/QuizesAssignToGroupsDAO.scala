@@ -1,7 +1,5 @@
 package com.managementapp.database.dao
 
-import java.sql.Timestamp
-
 import com.managementapp.database.models.QuizesAssignToGroups
 import slick.driver.MySQLDriver.api._
 
@@ -9,7 +7,7 @@ class QuizesAssignToGroupsTable(tag: Tag) extends Table[QuizesAssignToGroups](ta
   // scalastyle:off public.methods.have.type
   def groupId = column[Long]("GROUP_ID")
   def quizId = column[Long]("QUIZ_ID")
-  def assignAt = column[Timestamp]("ASSIGN_AT")
+  def assignAt = column[Long]("ASSIGN_AT")
   def * = (groupId, quizId, assignAt) <> (QuizesAssignToGroups.tupled, QuizesAssignToGroups.unapply)
 
   private val groups = TableQuery[GroupsTable]

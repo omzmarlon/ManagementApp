@@ -1,0 +1,19 @@
+syntax = "proto3";
+package com.managementapp.transfers;
+
+message AccountDTO {
+    int64  id = 1;
+    string username = 2;
+    string email = 3;
+    string password = 4;
+    int64  phone = 5;
+    enum Gender {
+        Male = 0;
+        Female = 1;
+    }
+    Gender gender = 6;
+    bytes  avatar = 7;
+    int64  register_at = 8;
+    int64  last_update_at = 9;
+    bool   is_tutor = 10;
+}

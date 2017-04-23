@@ -1,7 +1,5 @@
 package com.managementapp.database.dao
 
-import java.sql.Timestamp
-
 import com.managementapp.database.models.TutorsCreateGroups
 import slick.driver.MySQLDriver.api._
 
@@ -9,7 +7,7 @@ class TutorsCreateGroupsTable(tag: Tag) extends Table[TutorsCreateGroups](tag, "
   // scalastyle:off public.methods.have.type
   def groupId = column[Long]("GROUP_ID", O.PrimaryKey)
   def userId = column[Long]("USER_ID")
-  def createAt = column[Timestamp]("CREATE_AT")
+  def createAt = column[Long]("CREATE_AT")
   def * = (groupId, userId, createAt) <> (TutorsCreateGroups.tupled, TutorsCreateGroups.unapply)
 
   private val groups = TableQuery[GroupsTable]

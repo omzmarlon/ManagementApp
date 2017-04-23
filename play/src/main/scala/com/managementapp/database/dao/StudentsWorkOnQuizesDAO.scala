@@ -1,7 +1,5 @@
 package com.managementapp.database.dao
 
-import java.sql.Timestamp
-
 import com.managementapp.database.models.StudentsWorkOnQuizes
 import slick.driver.MySQLDriver.api._
 
@@ -11,8 +9,8 @@ class StudentsWorkOnQuizesTable(tag: Tag) extends Table[StudentsWorkOnQuizes](ta
   def quizId = column[Long]("QUIZ_ID")
   def grade = column[Int]("GRADE")
   def stuAnswer = column[String]("STUDENT_ANSWER")
-  def startAt = column[Timestamp]("START_AT")
-  def endAt = column[Timestamp]("END_AT")
+  def startAt = column[Long]("START_AT")
+  def endAt = column[Long]("END_AT")
   def * = (userId, quizId, grade, stuAnswer, startAt, endAt) <> (StudentsWorkOnQuizes.tupled, StudentsWorkOnQuizes.unapply)
 
   private val quizes = TableQuery[QuizesTable]

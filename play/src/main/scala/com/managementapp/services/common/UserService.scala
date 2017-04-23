@@ -9,14 +9,14 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}
 
 class UserService @Inject() (private val userDAO: UsersDAO, private val authService: AuthenticationService) {
-  def persistNewUser(email: String, password: String): Unit = {
+  def persistNewUser(username: String, password: String, email: String): Unit = {
     //TODO: provider better error reporting to this method
     userDAO.findUserByEmail(email).onComplete {
       case Success(userOpt) =>
         if (userOpt.isDefined) {
           throw new Exception("User Already Exist")
         } else {
-          userDAO.persistNewUser(Users(email, authService.encryptUserPassword(password)))
+          userDAO.add(Users(username, email, authService.encryptUserPassword(password)))
         }
       case Failure(e) => throw new Exception(e.getMessage) //TODO: organize our exceptions
     }

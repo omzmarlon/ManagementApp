@@ -3,6 +3,7 @@ package com.managementapp.services.authentication
 import com.google.inject.Inject
 import com.managementapp.database.dao.UsersDAO
 import com.managementapp.database.models.Users
+import com.managementapp.services.common.UserService
 import org.jasypt.util.password.BasicPasswordEncryptor
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -18,11 +19,11 @@ class AuthenticationService @Inject() (private val userDAO: UsersDAO, private va
   /**
     * @return token string
     * */
-  def validateUserPassword(email: String, password: String): Future[Option[String]] = {
+  def validateUserPassword(username: String, email: String, password: String): Future[Option[String]] = {
     userDAO.findUserByEmail(email).map {
       userOpt =>
         if (encryptor.checkPassword(password, userOpt.getOrElse(throw new Exception("User Not Found")).password)) {
-          Some(tokenService.generateToken(Users(email, password)))
+          Some(tokenService.generateToken(Users(username, email, encryptUserPassword(password))))
         } else {
           None
         }

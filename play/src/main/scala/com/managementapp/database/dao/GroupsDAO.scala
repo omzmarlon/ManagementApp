@@ -1,7 +1,5 @@
 package com.managementapp.database.dao
 
-import java.sql.Timestamp
-
 import com.google.inject.Inject
 import com.managementapp.database.models.Groups
 import com.managementapp.services.common.ManagementAppDatabase
@@ -12,8 +10,8 @@ class GroupsTable(tag: Tag) extends Table[Groups](tag, "GROUPS") {
   // scalastyle:off public.methods.have.type
   def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
   def groupName = column[String]("GROUP_NAME")
-  def startAt = column[Timestamp]("START_AT")
-  def endAt = column[Timestamp]("END_AT")
+  def startAt = column[Long]("START_AT")
+  def endAt = column[Long]("END_AT")
   def * = (id, groupName, startAt, endAt) <> (Groups.tupled, Groups.unapply)
 }
 
