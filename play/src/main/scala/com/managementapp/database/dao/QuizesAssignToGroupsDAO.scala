@@ -1,7 +1,12 @@
 package com.managementapp.database.dao
 
+import com.google.inject.Inject
 import com.managementapp.database.models.QuizesAssignToGroups
+import com.managementapp.services.common.ManagementAppDatabase
+import play.api.db.slick.DatabaseConfigProvider
 import slick.driver.MySQLDriver.api._
+
+import scala.concurrent.Future
 
 class QuizesAssignToGroupsTable(tag: Tag) extends Table[QuizesAssignToGroups](tag, "QUIZES_ASSIGN_TO_GROUPS") {
   // scalastyle:off public.methods.have.type
@@ -18,6 +23,11 @@ class QuizesAssignToGroupsTable(tag: Tag) extends Table[QuizesAssignToGroups](ta
   def quizFK = foreignKey("QUIZ_FK", quizId, quizes)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
 }
 
-class QuizesAssignToGroupsDAO {
+class QuizesAssignToGroupsDAO @Inject()(val configProvider: DatabaseConfigProvider) extends DAO[QuizesAssignToGroups, Long] with ManagementAppDatabase{
 
+  override def add(model: QuizesAssignToGroups): Future[QuizesAssignToGroups] = ???
+
+  override def delete(id: Long): Future[Boolean] = ???
+
+  override def findAll(): Future[Seq[QuizesAssignToGroups]] = ???
 }

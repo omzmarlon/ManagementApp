@@ -6,6 +6,8 @@ import com.managementapp.services.common.ManagementAppDatabase
 import play.api.db.slick.DatabaseConfigProvider
 import slick.driver.MySQLDriver.api._
 
+import scala.concurrent.Future
+
 class GroupsTable(tag: Tag) extends Table[Groups](tag, "GROUPS") {
   // scalastyle:off public.methods.have.type
   def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
@@ -15,6 +17,11 @@ class GroupsTable(tag: Tag) extends Table[Groups](tag, "GROUPS") {
   def * = (id, groupName, startAt, endAt) <> (Groups.tupled, Groups.unapply)
 }
 
-class GroupsDAO @Inject()(val configProvider: DatabaseConfigProvider) extends ManagementAppDatabase {
+class GroupsDAO @Inject()(val configProvider: DatabaseConfigProvider) extends DAO[Groups, Long] with ManagementAppDatabase {
 
+  override def add(model: Groups): Future[Groups] = ???
+
+  override def delete(id: Long): Future[Boolean] = ???
+
+  override def findAll(): Future[Seq[Groups]] = ???
 }

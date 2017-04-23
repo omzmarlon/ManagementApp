@@ -6,6 +6,8 @@ import com.managementapp.services.common.ManagementAppDatabase
 import play.api.db.slick.DatabaseConfigProvider
 import slick.driver.MySQLDriver.api._
 
+import scala.concurrent.Future
+
 class QuizItemsTable(tag: Tag) extends Table[QuizItems](tag, "QUIZ_ITEMS") {
   // scalastyle:off public.methods.have.type
   def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
@@ -15,6 +17,11 @@ class QuizItemsTable(tag: Tag) extends Table[QuizItems](tag, "QUIZ_ITEMS") {
   def * = (id, body, choices, answer) <> (QuizItems.tupled, QuizItems.unapply)
 }
 
-class QuizItemsDAO @Inject()(val configProvider: DatabaseConfigProvider) extends ManagementAppDatabase {
+class QuizItemsDAO @Inject()(val configProvider: DatabaseConfigProvider) extends DAO[QuizItems, Long] with ManagementAppDatabase {
 
+  override def add(model: QuizItems): Future[QuizItems] = ???
+
+  override def delete(id: Long): Future[Boolean] = ???
+
+  override def findAll(): Future[Seq[QuizItems]] = ???
 }
