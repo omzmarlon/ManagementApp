@@ -1,12 +1,12 @@
 package com.managementapp.database.models
 
-import java.sql.{Blob, Date}
+import java.sql.Date
 
 case class Students (
                     userId: Long,
                     credits: Int,
                     birthday: Option[Date],
-                    passport: Option[Blob],
-                    insurance: Option[Blob],
+                    passport: Option[Long],
+                    insurance: Option[Long],
                     schoolId: Option[Long]
                     )

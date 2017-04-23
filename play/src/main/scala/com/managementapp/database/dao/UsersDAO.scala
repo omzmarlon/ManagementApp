@@ -1,7 +1,5 @@
 package com.managementapp.database.dao
 
-import java.sql.Blob
-
 import com.google.inject.Inject
 import com.managementapp.database.models.Gender.Gender
 import com.managementapp.database.models.{Gender, Users}
@@ -12,7 +10,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 import scala.concurrent.Future
 
-class UsersTable(tag: Tag) extends Table[Users](tag, "USER") {
+class UsersTable(tag: Tag) extends Table[Users](tag, "USERS") {
   // scalastyle:off public.methods.have.type
   def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
   def username = column[String]("USERNAME")
@@ -20,7 +18,7 @@ class UsersTable(tag: Tag) extends Table[Users](tag, "USER") {
   def email = column[String]("EMAIL")
   def phone = column[Long]("PHONE")
   def gender = column[Gender]("GENDER")
-  def avatar = column[Blob]("AVATAR")
+  def avatar = column[Long]("AVATAR")
   def registerAt = column[Long]("REGISTER_AT")
   def lastUpdateAt = column[Long]("LAST_UPDATE_AT")
   def isTutor = column[Boolean]("IS_TUTOR")
@@ -30,6 +28,10 @@ class UsersTable(tag: Tag) extends Table[Users](tag, "USER") {
     gender => gender.toString,
     str => Gender.withName(str)
   )
+
+  private val images = TableQuery[ImagesTable]
+
+  def imageFK = foreignKey("IMAGE_FK", avatar, images)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade))
 }
 
 class UsersDAO @Inject()(val configProvider: DatabaseConfigProvider) extends DAO[Users, Long] with ManagementAppDatabase {
