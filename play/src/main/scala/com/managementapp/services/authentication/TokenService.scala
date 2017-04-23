@@ -1,7 +1,7 @@
 package com.managementapp.services.authentication
 
 import com.google.inject.{Inject, Singleton}
-import com.managementapp.database.models.User
+import com.managementapp.database.models.Users
 import io.jsonwebtoken.{Jwts, SignatureAlgorithm}
 
 import scala.util.{Failure, Success, Try}
@@ -11,7 +11,7 @@ class TokenService @Inject() (private val securityProvider: SecurityConfigProvid
   private val jwtBuilder = Jwts.builder
   private val jwtParser = Jwts.parser
 
-  def generateToken(user: User): String = {
+  def generateToken(user: Users): String = {
     jwtBuilder
       .setSubject(user.email)
       .setExpiration(securityProvider.getExpiryTime)
