@@ -23,6 +23,8 @@ class UsersTable(tag: Tag) extends Table[Users](tag, "USERS") {
   def isTutor = column[Boolean]("IS_TUTOR")
   def * = (username, password, email, id, phone.?, gender?, registerAt, lastUpdateAt, isTutor) <> (Users.tupled, Users.unapply)
 
+  // Slick `colunm()` function only knows how to map basic types, so we need to map custom column type to basic type
+  // Reference http://slick.lightbend.com/doc/3.0.0/userdefined.html
   implicit val genderMapper = MappedColumnType.base[Gender, String](
     gender => gender.toString,
     str => Gender.withName(str)
