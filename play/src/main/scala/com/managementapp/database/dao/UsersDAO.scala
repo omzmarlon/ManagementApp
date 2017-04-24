@@ -1,7 +1,5 @@
 package com.managementapp.database.dao
 
-import java.sql.Blob
-
 import com.google.inject.Inject
 import com.managementapp.database.models.Gender.Gender
 import com.managementapp.database.models.{Gender, Users}
@@ -12,7 +10,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 import scala.concurrent.Future
 
-class UsersTable(tag: Tag) extends Table[Users](tag, "USER") {
+class UsersTable(tag: Tag) extends Table[Users](tag, "USERS") {
   // scalastyle:off public.methods.have.type
   def id = column[Long]("ID", O.PrimaryKey, O.AutoInc)
   def username = column[String]("USERNAME")
@@ -20,12 +18,13 @@ class UsersTable(tag: Tag) extends Table[Users](tag, "USER") {
   def email = column[String]("EMAIL")
   def phone = column[Long]("PHONE")
   def gender = column[Gender]("GENDER")
-  def avatar = column[Blob]("AVATAR")
   def registerAt = column[Long]("REGISTER_AT")
   def lastUpdateAt = column[Long]("LAST_UPDATE_AT")
   def isTutor = column[Boolean]("IS_TUTOR")
-  def * = (username, password, email, id, phone.?, gender?, avatar.?, registerAt, lastUpdateAt, isTutor) <> (Users.tupled, Users.unapply)
+  def * = (username, password, email, id, phone.?, gender?, registerAt, lastUpdateAt, isTutor) <> (Users.tupled, Users.unapply)
 
+  // Slick `colunm()` function only knows how to map basic types, so we need to map custom column type to basic type
+  // Reference http://slick.lightbend.com/doc/3.0.0/userdefined.html
   implicit val genderMapper = MappedColumnType.base[Gender, String](
     gender => gender.toString,
     str => Gender.withName(str)

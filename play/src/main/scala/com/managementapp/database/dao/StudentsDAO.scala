@@ -1,6 +1,6 @@
 package com.managementapp.database.dao
 
-import java.sql.{Blob, Date}
+import java.sql.Date
 
 import com.google.inject.Inject
 import com.managementapp.database.models.Students
@@ -15,16 +15,14 @@ class StudentsTable(tag: Tag) extends Table[Students](tag, "STUDENTS") {
   def userId = column[Long]("USER_ID", O.PrimaryKey)
   def credits = column[Int]("CREDITS")
   def birthday = column[Date]("BIRTHDAY")
-  def passport = column[Blob]("PASSPORT")
-  def insurance = column[Blob]("INSURANCE")
   def schoolId = column[Long]("SCHOOL_ID")
-  def * = (userId, credits, birthday.?, passport.?, insurance.?, schoolId.?) <> (Students.tupled, Students.unapply)
+  def * = (userId, credits, birthday.?, schoolId.?) <> (Students.tupled, Students.unapply)
 
   private val users = TableQuery[UsersTable]
   private val schools = TableQuery[SchoolsTable]
 
   def userFK = foreignKey("USER_FK", userId, users)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
-  def schoolFK = foreignKey("SCHOOL_FK", schoolId, schools)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
+  def schoolFK = foreignKey("SCHOOL_FK", schoolId, schools)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.SetNull)
 }
 
 class StudentsDAO @Inject()(val configProvider: DatabaseConfigProvider) extends DAO[Students, Long] with ManagementAppDatabase {
