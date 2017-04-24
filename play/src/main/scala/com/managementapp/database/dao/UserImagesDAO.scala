@@ -23,7 +23,7 @@ class UserImagesTable(tag: Tag) extends Table[UserImages](tag, "USER_IMAGES") {
   def userFK = foreignKey("USER_FK", userId, users)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
   def imageFK = foreignKey("IMAGE_FK", imageId, images)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
 
-  implicit val genderMapper = MappedColumnType.base[Category, String](
+  implicit val categoryMapper = MappedColumnType.base[Category, String](
     cat => cat.toString,
     str => Category.withName(str)
   )
