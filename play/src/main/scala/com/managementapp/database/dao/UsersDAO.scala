@@ -18,20 +18,15 @@ class UsersTable(tag: Tag) extends Table[Users](tag, "USERS") {
   def email = column[String]("EMAIL")
   def phone = column[Long]("PHONE")
   def gender = column[Gender]("GENDER")
-  def avatar = column[Long]("AVATAR")
   def registerAt = column[Long]("REGISTER_AT")
   def lastUpdateAt = column[Long]("LAST_UPDATE_AT")
   def isTutor = column[Boolean]("IS_TUTOR")
-  def * = (username, password, email, id, phone.?, gender?, avatar.?, registerAt, lastUpdateAt, isTutor) <> (Users.tupled, Users.unapply)
+  def * = (username, password, email, id, phone.?, gender?, registerAt, lastUpdateAt, isTutor) <> (Users.tupled, Users.unapply)
 
   implicit val genderMapper = MappedColumnType.base[Gender, String](
     gender => gender.toString,
     str => Gender.withName(str)
   )
-
-  private val images = TableQuery[ImagesTable]
-
-  def imageFK = foreignKey("IMAGE_FK", avatar, images)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade))
 }
 
 class UsersDAO @Inject()(val configProvider: DatabaseConfigProvider) extends DAO[Users, Long] with ManagementAppDatabase {

@@ -12,7 +12,6 @@ message AccountDTO {
         Female = 1;
     }
     Gender gender = 6;
-    bytes  avatar = 7;
     int64  register_at = 8;
     int64  last_update_at = 9;
     bool   is_tutor = 10;

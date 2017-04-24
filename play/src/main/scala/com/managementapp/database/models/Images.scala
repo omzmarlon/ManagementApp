@@ -6,6 +6,5 @@ case class Images (
                   filePath: String,
                   fileType: Option[String],
                   fileSize: Option[Long],
-                  uploader: Option[Long],
                   uploadAt: Long
                   )

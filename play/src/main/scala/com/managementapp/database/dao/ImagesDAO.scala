@@ -15,13 +15,8 @@ class ImagesTable(tag: Tag) extends Table[Images](tag, "IMAGES") {
   def filePath = column[String]("FILE_PATH")
   def fileType = column[String]("FILE_TYPE")
   def fileSize = column[Long]("FILE_SIZE")
-  def uploader = column[Long]("UPLOADER")
   def uploadAt = column[Long]("UPLOAD_AT")
-  def * = (id, fileName, filePath, fileType.?, fileSize.?, uploader.?, uploadAt) <> (Images.tupled, Images.unapply)
-
-  private val users = TableQuery[UsersTable]
-
-  def userFK = foreignKey("USER_FK", uploader, users)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
+  def * = (id, fileName, filePath, fileType.?, fileSize.?, uploadAt) <> (Images.tupled, Images.unapply)
 }
 
 class ImagesDAO @Inject()(val configProvider: DatabaseConfigProvider) extends DAO[Images, Long] with ManagementAppDatabase {
