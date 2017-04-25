@@ -1,10 +1,10 @@
 {
   "name": "ManagementApp",
   "version": "0.0.1",
-  "description": "",
+  "description": "Management App in Angular2 and Scala/Play",
   "author": "Marlon-Tom-Roceley",
   "scripts": {
-    "build": "gulp"
+    "build": "rm -rf target/; gulp;"
   },
   "dependencies": {
     "@angular/common": "~4.0.0",
@@ -32,8 +32,10 @@
     "gulp-clean": "^0.3.2",
     "gulp-less": "^3.3.0",
     "gulp-sourcemaps": "^2.6.0",
+    "gulp-tslint": "^8.0.0",
     "gulp-typescript": "^3.1.6",
     "run-sequence": "^1.2.2",
+    "tslint": "^5.1.0",
     "typescript": "^2.2.2"
   }
 }

@@ -5,12 +5,14 @@ var runSequence = require('run-sequence');
 var tsProject = ts.createProject("tsconfig.json");
 var sourceMaps = require('gulp-sourcemaps');
 var less = require('gulp-less');
+var tsLint = require("gulp-tslint");
 
 gulp.task('default', function () {
     runSequence(
         'clean',
         'html',
         'less',
+        "tsLint",
         'ts'
     );
 });
@@ -38,4 +40,10 @@ gulp.task('less', function () {
 gulp.task('clean', function () {
     return gulp.src('target/**/*', {read: false})
         .pipe(clean());
+});
+
+gulp.task('tsLint', function () {
+    gulp.src("src/**/*.ts")
+        .pipe(tsLint({}))
+        .pipe(tsLint.report())
 });
