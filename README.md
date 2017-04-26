@@ -2,4 +2,6 @@
 
 Angular2  +  Scala Play
 
-sbt "project managementapp_play" run
+To build front-end: cd web; npm run build; 
+
+To run server from scratch: In root folder: sbt clean protocGenerate run
