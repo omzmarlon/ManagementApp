@@ -20,6 +20,9 @@
             '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+            "@ngrx/store": "npm:@ngrx/store/bundles/store.umd.js",
+            "@ngrx/effects": "npm:@ngrx/effects/bundles/effects.umd.js",
+            "lodash": "npm:lodash/lodash.js",
 
             // other libraries
             'rxjs':                      'npm:rxjs',

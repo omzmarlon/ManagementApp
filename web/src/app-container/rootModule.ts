@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { AppContainerComponent } from "./components/appContainerComponent";
+import { AppContainerComponent } from "./containers/components/appContainerComponent";
 import {AppRoutingModule} from "./rootRoutingModule";
 import {MACommonModule} from "../common/commonModule";
 import {LocationStrategy, HashLocationStrategy} from "@angular/common";
-import {HomeComponent} from "./components/homeComponent";
-import {AuthenticationComponent} from "./components/authenticationComponent";
+import {HomeComponent} from "./containers/components/homeComponent";
+import {AuthenticationComponent} from "./authentication/components/authenticationComponent";
 
 @NgModule({
     declarations: [AppContainerComponent, HomeComponent, AuthenticationComponent],

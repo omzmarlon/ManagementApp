@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
-import {HomeComponent} from "./components/homeComponent";
-import {AuthenticationComponent} from "./components/authenticationComponent";
+import {HomeComponent} from "./containers/components/homeComponent";
+import {AuthenticationComponent} from "./authentication/components/authenticationComponent";
 
 export const routes: Routes = [
     { path: "", component: HomeComponent, pathMatch: "full"},
