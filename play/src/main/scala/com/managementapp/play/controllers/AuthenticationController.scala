@@ -14,6 +14,7 @@ class AuthenticationController @Inject() (authService: AuthenticationService, us
     Ok("Logged in user is: " + request.user.email)
   }
 
+  //create account requires email, username, and password
   def createAccount: Action[AnyContent] = Action {
     request =>
       val account = parseJSONProtocolBuffer[AccountDTO](AccountDTO.newBuilder, request)
@@ -21,6 +22,7 @@ class AuthenticationController @Inject() (authService: AuthenticationService, us
       Ok("")
   }
 
+  //login to an account requires email and password
   def login: Action[AnyContent] = Action.async {
     request =>
       val account = parseJSONProtocolBuffer[AccountDTO](AccountDTO.newBuilder, request)
