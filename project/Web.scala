@@ -16,17 +16,12 @@ object Web {
     //proto-sbt doc:
     // https://github.com/thesamet/sbt-protoc
     //for usage in typescript:
-    //Found a protoc plugin for typescript
-    //brew install protobuf (this may have some symlink issue)
-    //npm install ts-protoc-gen --save
-    //npm install google-protobuf --save
-    //https://github.com/improbable-eng/ts-protoc-gen
+    //use protobufjs
+    //pbjs + pbts
+    //see their doc for details
+    //note: generated .js and .d.ts files have to used together
     PB.targets in Compile := Seq(
       PB.gens.java -> ((sourceDirectory in Compile).value / "protobuf_generated")
-    ),
-    PB.protocOptions in Compile := Seq(
-      "--plugin=protoc-gen-ts=" + "./web/node_modules/.bin/protoc-gen-ts",
-      "--ts_out=service=true:" + "./web/src/dto"
     ),
     sourceGenerators in Compile -= (PB.generate in Compile).taskValue,
     unmanagedSourceDirectories in Compile += ((sourceDirectory in Compile).value / "protobuf_generated")
