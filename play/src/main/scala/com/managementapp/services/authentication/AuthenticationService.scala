@@ -23,7 +23,7 @@ class AuthenticationService @Inject() (private val userDAO: UsersDAO, private va
     userDAO.findUserByEmail(email).map {
       userOpt =>
         if (encryptor.checkPassword(password, userOpt.getOrElse(throw new Exception("User Not Found")).password)) {
-          Some(tokenService.generateToken(Users(username, email, encryptUserPassword(password))))
+          Some(tokenService.generateToken(userOpt.get))
         } else {
           None
         }

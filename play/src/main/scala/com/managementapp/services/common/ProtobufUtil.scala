@@ -13,4 +13,9 @@ trait ProtobufUtil {
     JsonFormat.parser().merge(json, builder)
     builder.build.asInstanceOf[T]
   }
+
+  def generateJSON[M <: Message](content: M): String = {
+    JsonFormat.printer().print(content)
+  }
+
 }

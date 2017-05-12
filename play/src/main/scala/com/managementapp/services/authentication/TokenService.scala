@@ -13,7 +13,7 @@ class TokenService @Inject() (private val securityProvider: SecurityConfigProvid
 
   def generateToken(user: Users): String = {
     jwtBuilder
-      .setSubject(user.email)
+      .setSubject(user.username)
       .setExpiration(securityProvider.getExpiryTime)
       .signWith(SignatureAlgorithm.HS512, securityProvider.getSecurityKey)
       .compact()

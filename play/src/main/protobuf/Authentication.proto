@@ -1,0 +1,6 @@
+syntax = "proto3";
+package com.managementapp.transfers;
+
+message TokenDTO {
+    string token = 1;
+}
