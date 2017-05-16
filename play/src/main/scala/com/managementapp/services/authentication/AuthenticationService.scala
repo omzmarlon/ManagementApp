@@ -3,7 +3,6 @@ package com.managementapp.services.authentication
 import com.google.inject.Inject
 import com.managementapp.database.dao.UsersDAO
 import com.managementapp.database.models.Users
-import com.managementapp.services.common.UserService
 import org.jasypt.util.password.BasicPasswordEncryptor
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -17,15 +16,17 @@ class AuthenticationService @Inject() (private val userDAO: UsersDAO, private va
   private val encryptor = new BasicPasswordEncryptor //TODO: maybe use more sophisticated encryptor in the future
 
   /**
-    * @return token string
+    * @return (username string, token string) tuple
     * */
-  def validateUserPassword(username: String, email: String, password: String): Future[Option[String]] = {
+  def validateUserPassword(email: String, password: String): Future[(String, String)] = {
     userDAO.findUserByEmail(email).map {
       userOpt =>
         if (encryptor.checkPassword(password, userOpt.getOrElse(throw new Exception("User Not Found")).password)) {
-          Some(tokenService.generateToken(userOpt.get))
+          (userOpt.get.username, tokenService.generateToken(userOpt.get))
         } else {
-          None
+          // I'm writing an exception handler, once done we can just throw an custom exception like
+          // LoginFailedException, and then play server will automatically send a 403 Response
+          throw new Exception("Invalid password")
         }
     }
   }

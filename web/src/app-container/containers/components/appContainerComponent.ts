@@ -5,6 +5,7 @@ import {SpinnerAnchor} from "../../spinners/components/spinnerComponent";
 import {SpinnerService} from "../../spinners/services/spinnerService";
 import {AbstractBaseComponent} from "../../../common/components/baseComponent";
 import {Subscription} from "rxjs/Rx";
+import * as Cookies from "@types/js-cookie";
 
 @Component({
     selector: "management-app",
@@ -35,9 +36,7 @@ export class AppContainerComponent extends AbstractBaseComponent implements Afte
     }
 
     public get username(): string {
-        const subject: string = "sub";
-        const token: string = this._authService.getToken();
-        return jwt(token)[subject];
+        return this._authService.getUsername();
     }
 
     public isLoggedIn(): boolean {
@@ -45,6 +44,6 @@ export class AppContainerComponent extends AbstractBaseComponent implements Afte
     }
 
     public logout(): void {
-        this._authService.removeToken();
+        this._authService.logout().subscribe();
     }
 }

@@ -6,7 +6,7 @@ import play.api.mvc.{AnyContent, Request}
 
 
 trait ProtobufUtil {
-  def parseJSONProtocolBuffer[T <: Message](builder: Message.Builder, request: Request[AnyContent]): T = {
+  def jsonToProtobuf[T <: Message](builder: Message.Builder, request: Request[AnyContent]): T = {
     //TODO: organize our exceptions
     //TODO: properly handle invalid body type (invalid json? format non-json?)
     val json = request.body.asJson.getOrElse(throw new Exception("Invalid JSON")).toString()
@@ -14,7 +14,7 @@ trait ProtobufUtil {
     builder.build.asInstanceOf[T]
   }
 
-  def generateJSON[M <: Message](content: M): String = {
+  def protobufToJSON[M <: Message](content: M): String = {
     JsonFormat.printer().print(content)
   }
 

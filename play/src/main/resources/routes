@@ -2,5 +2,6 @@ GET     /                           com.managementapp.play.controllers.IndexCont
 
 GET     /assets/*file               controllers.ExternalAssets.at(path="../web", file)
 POST     /auth/login                 com.managementapp.play.controllers.AuthenticationController.login
+POST     /auth/logout                 com.managementapp.play.controllers.AuthenticationController.logout
 POST     /auth/create                com.managementapp.play.controllers.AuthenticationController.createAccount
 GET     /test                      com.managementapp.play.controllers.AuthenticationController.sampleActionThatRequiresAuth

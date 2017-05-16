@@ -50,9 +50,8 @@ export class AuthenticationComponent extends AbstractBaseComponent {
         if (this.canLogin()) {
             const subscription: Subscription =
                 this._authService.login(this._account.email.some(), this._account.password.some()).subscribe(
-                    (token: string) => {
+                    () => {
                         this._spinnerService.hideSpinner();
-                        this._authService.storeToken(token);
                         this._router.navigate(["/"]);
                     }
                 );

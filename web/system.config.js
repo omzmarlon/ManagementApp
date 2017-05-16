@@ -32,6 +32,7 @@
             "protobuf": "npm:protobufjs/dist/protobuf.js",
             "long": "npm:long/dist/long.js",
             "jwt-decode": "npm:jwt-decode/build/jwt-decode.min.js",
+            "js-cookie": "npm:js-cookie/src/js.cookie.js",
 
             // other libraries
             'rxjs':                      'npm:rxjs',
