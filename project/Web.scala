@@ -1,7 +1,7 @@
 import play.sbt.PlayImport.PlayKeys
 import PlayKeys.playMonitoredFiles
 import play.twirl.sbt.Import.TwirlKeys
-import sbt.Keys.{sourceDirectories, sourceDirectory, unmanagedSourceDirectories, sourceGenerators}
+import sbt.Keys.{sourceDirectories, sourceDirectory, unmanagedSourceDirectories, sourceGenerators, baseDirectory}
 import sbt._
 import sbtprotoc.ProtocPlugin.autoImport.PB
 
@@ -16,8 +16,10 @@ object Web {
     //proto-sbt doc:
     // https://github.com/thesamet/sbt-protoc
     //for usage in typescript:
-    //http://stackoverflow.com/questions/40561548/protocol-buffers-in-angular-2-project
-    //http://dcode.io/protobuf.js/
+    //use protobufjs
+    //pbjs + pbts
+    //see their doc for details
+    //note: generated .js and .d.ts files have to used together
     PB.targets in Compile := Seq(
       PB.gens.java -> ((sourceDirectory in Compile).value / "protobuf_generated")
     ),

@@ -1,0 +1,46 @@
+<div class="management-app-auth-container">
+    <div *ngIf="isLoginMode">
+        <md-card>
+            <md-card-title>Login to Management App</md-card-title>
+            <md-card-subtitle>Login through email</md-card-subtitle>
+            <md-card-content>
+                <md-input-container class="full-width">
+                    <input mdInput placeholder="example@email.com" type="email" [(ngModel)]="email">
+                </md-input-container>
+                <md-input-container class="full-width">
+                    <input mdInput placeholder="my secret password" type="password" [(ngModel)]="password">
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions>
+                <button md-button [disabled]="!canLogin()" (click)="login()">
+                    Login!
+                </button>
+                <button md-button (click)="setAuthMode(authModes.REGISTER)">Create an Account</button>
+            </md-card-actions>
+        </md-card>
+    </div>
+
+    <div *ngIf="isRegistrationMode">
+        <md-card>
+            <md-card-title>Create a Student Account</md-card-title>
+            <md-card-subtitle>Please provide username, email, password</md-card-subtitle>
+            <md-card-content>
+                <md-input-container class="full-width">
+                    <input mdInput placeholder="example@email.com" type="email" [(ngModel)]="email">
+                </md-input-container>
+                <md-input-container class="full-width">
+                    <input mdInput placeholder="my awesome username" [(ngModel)]="username">
+                </md-input-container>
+                <md-input-container class="full-width">
+                    <input mdInput placeholder="my secret password" type="password" [(ngModel)]="password">
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions>
+                <button md-button [disabled]="!canRegister()" (click)="register()">
+                    Register
+                </button>
+                <button md-button (click)="setAuthMode(authModes.LOGIN)">Already Registered</button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

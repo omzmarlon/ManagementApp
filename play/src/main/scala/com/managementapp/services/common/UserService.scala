@@ -16,7 +16,7 @@ class UserService @Inject() (private val userDAO: UsersDAO, private val authServ
         if (userOpt.isDefined) {
           throw new Exception("User Already Exist")
         } else {
-          userDAO.add(Users(username, email, authService.encryptUserPassword(password)))
+          userDAO.add(Users(username, authService.encryptUserPassword(password), email))
         }
       case Failure(e) => throw new Exception(e.getMessage) //TODO: organize our exceptions
     }

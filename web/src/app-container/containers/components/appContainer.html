@@ -1,0 +1,32 @@
+<div class="main">
+    <div spinner></div>
+    <nav>
+        <a class="nav-item" routerLink="/">ManagementApp</a>
+        <div class="nav-item">
+            <div *ngIf="isLoggedIn()">
+                <a routerLink="/profiles">Hello, {{username}}</a>
+                <button md-raised-button (click)="logout()">Logout!</button>
+            </div>
+            <button routerLink="/authentication" md-raised-button *ngIf="!isLoggedIn()">Login</button>
+        </div>
+    </nav>
+    <div class="ma-app-container">
+        <div class="ma-content-navigation">
+            <div>
+                <a routerLink="/groups" routerLinkActive="active">Groups</a>
+            </div>
+
+            <div>
+                <a routerLink="/profiles" routerLinkActive="active">Your Profile</a>
+            </div>
+
+            <div>
+                <a routerLink="/quizzes" routerLinkActive="active">Quizzes</a>
+            </div>
+        </div>
+
+        <div class="ma-content-container">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -68,11 +68,6 @@ public final class Users {
     com.managementapp.transfers.Users.AccountDTO.Gender getGender();
 
     /**
-     * <code>optional bytes avatar = 7;</code>
-     */
-    com.google.protobuf.ByteString getAvatar();
-
-    /**
      * <code>optional int64 register_at = 8;</code>
      */
     long getRegisterAt();
@@ -105,7 +100,6 @@ public final class Users {
       password_ = "";
       phone_ = 0L;
       gender_ = 0;
-      avatar_ = com.google.protobuf.ByteString.EMPTY;
       registerAt_ = 0L;
       lastUpdateAt_ = 0L;
       isTutor_ = false;
@@ -168,11 +162,6 @@ public final class Users {
               int rawValue = input.readEnum();
 
               gender_ = rawValue;
-              break;
-            }
-            case 58: {
-
-              avatar_ = input.readBytes();
               break;
             }
             case 64: {
@@ -447,15 +436,6 @@ public final class Users {
       return result == null ? com.managementapp.transfers.Users.AccountDTO.Gender.UNRECOGNIZED : result;
     }
 
-    public static final int AVATAR_FIELD_NUMBER = 7;
-    private com.google.protobuf.ByteString avatar_;
-    /**
-     * <code>optional bytes avatar = 7;</code>
-     */
-    public com.google.protobuf.ByteString getAvatar() {
-      return avatar_;
-    }
-
     public static final int REGISTER_AT_FIELD_NUMBER = 8;
     private long registerAt_;
     /**
@@ -513,9 +493,6 @@ public final class Users {
       if (gender_ != com.managementapp.transfers.Users.AccountDTO.Gender.Male.getNumber()) {
         output.writeEnum(6, gender_);
       }
-      if (!avatar_.isEmpty()) {
-        output.writeBytes(7, avatar_);
-      }
       if (registerAt_ != 0L) {
         output.writeInt64(8, registerAt_);
       }
@@ -552,10 +529,6 @@ public final class Users {
       if (gender_ != com.managementapp.transfers.Users.AccountDTO.Gender.Male.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(6, gender_);
-      }
-      if (!avatar_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, avatar_);
       }
       if (registerAt_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -596,8 +569,6 @@ public final class Users {
       result = result && (getPhone()
           == other.getPhone());
       result = result && gender_ == other.gender_;
-      result = result && getAvatar()
-          .equals(other.getAvatar());
       result = result && (getRegisterAt()
           == other.getRegisterAt());
       result = result && (getLastUpdateAt()
@@ -628,8 +599,6 @@ public final class Users {
           getPhone());
       hash = (37 * hash) + GENDER_FIELD_NUMBER;
       hash = (53 * hash) + gender_;
-      hash = (37 * hash) + AVATAR_FIELD_NUMBER;
-      hash = (53 * hash) + getAvatar().hashCode();
       hash = (37 * hash) + REGISTER_AT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getRegisterAt());
@@ -769,8 +738,6 @@ public final class Users {
 
         gender_ = 0;
 
-        avatar_ = com.google.protobuf.ByteString.EMPTY;
-
         registerAt_ = 0L;
 
         lastUpdateAt_ = 0L;
@@ -805,7 +772,6 @@ public final class Users {
         result.password_ = password_;
         result.phone_ = phone_;
         result.gender_ = gender_;
-        result.avatar_ = avatar_;
         result.registerAt_ = registerAt_;
         result.lastUpdateAt_ = lastUpdateAt_;
         result.isTutor_ = isTutor_;
@@ -870,9 +836,6 @@ public final class Users {
         }
         if (other.gender_ != 0) {
           setGenderValue(other.getGenderValue());
-        }
-        if (other.getAvatar() != com.google.protobuf.ByteString.EMPTY) {
-          setAvatar(other.getAvatar());
         }
         if (other.getRegisterAt() != 0L) {
           setRegisterAt(other.getRegisterAt());
@@ -1212,35 +1175,6 @@ public final class Users {
         return this;
       }
 
-      private com.google.protobuf.ByteString avatar_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>optional bytes avatar = 7;</code>
-       */
-      public com.google.protobuf.ByteString getAvatar() {
-        return avatar_;
-      }
-      /**
-       * <code>optional bytes avatar = 7;</code>
-       */
-      public Builder setAvatar(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        avatar_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional bytes avatar = 7;</code>
-       */
-      public Builder clearAvatar() {
-        
-        avatar_ = getDefaultInstance().getAvatar();
-        onChanged();
-        return this;
-      }
-
       private long registerAt_ ;
       /**
        * <code>optional int64 register_at = 8;</code>
@@ -1382,13 +1316,13 @@ public final class Users {
   static {
     java.lang.String[] descriptorData = {
       "\n\013Users.proto\022\033com.managementapp.transfe" +
-      "rs\"\211\002\n\nAccountDTO\022\n\n\002id\030\001 \001(\003\022\020\n\010usernam" +
+      "rs\"\371\001\n\nAccountDTO\022\n\n\002id\030\001 \001(\003\022\020\n\010usernam" +
       "e\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022\020\n\010password\030\004 \001(\t" +
       "\022\r\n\005phone\030\005 \001(\003\022>\n\006gender\030\006 \001(\0162..com.ma" +
       "nagementapp.transfers.AccountDTO.Gender\022" +
-      "\016\n\006avatar\030\007 \001(\014\022\023\n\013register_at\030\010 \001(\003\022\026\n\016" +
-      "last_update_at\030\t \001(\003\022\020\n\010is_tutor\030\n \001(\010\"\036" +
-      "\n\006Gender\022\010\n\004Male\020\000\022\n\n\006Female\020\001b\006proto3"
+      "\023\n\013register_at\030\010 \001(\003\022\026\n\016last_update_at\030\t" +
+      " \001(\003\022\020\n\010is_tutor\030\n \001(\010\"\036\n\006Gender\022\010\n\004Male" +
+      "\020\000\022\n\n\006Female\020\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1407,7 +1341,7 @@ public final class Users {
     internal_static_com_managementapp_transfers_AccountDTO_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_managementapp_transfers_AccountDTO_descriptor,
-        new java.lang.String[] { "Id", "Username", "Email", "Password", "Phone", "Gender", "Avatar", "RegisterAt", "LastUpdateAt", "IsTutor", });
+        new java.lang.String[] { "Id", "Username", "Email", "Password", "Phone", "Gender", "RegisterAt", "LastUpdateAt", "IsTutor", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
