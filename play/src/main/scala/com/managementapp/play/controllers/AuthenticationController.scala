@@ -13,7 +13,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class AuthenticationController @Inject() (authService: AuthenticationService, userService: UserService) extends Controller with ProtobufUtil {
   def sampleActionThatRequiresAuth: Action[AnyContent] = AuthenticatedAction(authService) { request =>
     //this route requires login first
-    Ok("Logged in user is: " + request.user.email)
+    Ok("Logged in user is: " + request.user.email + " User id: " + request.user.id)
   }
 
   //create account requires email, username, and password
