@@ -28,7 +28,16 @@ object MAErrorResults extends Results with ProtobufUtil {
 
   def internalServerError(e: Exception): Result = {
     // Handling unexpected server error
-    InternalServerError(protobufToJSON(ErrorMessageDTO.newBuilder.setMessage(e.getMessage).build)).as(MimeTypes.JSON)
+    InternalServerError(
+      protobufToJSON(
+        ErrorMessageDTO
+          .newBuilder
+          .setMessage(e.getMessage)
+          .setExceptionCode("0")
+          .setCode("Unexpected server error")
+          .setStatus(500)
+          .build
+      )).as(MimeTypes.JSON)
   }
 
   // add more methods as necessary...

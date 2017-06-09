@@ -28,6 +28,7 @@
             '@angular/animations': 'npm:@angular/animations/bundles/animations.umd.js',
             "lodash": "npm:lodash/lodash.js",
             "monet": "npm:monet/src/main/javascript/monet.js",
+            "protobufjs/minimal": "npm:protobufjs/dist/minimal/protobuf.js",
             "protobufjs": "npm:protobufjs/dist/protobuf.js",
             "protobuf": "npm:protobufjs/dist/protobuf.js",
             "long": "npm:long/dist/long.js",

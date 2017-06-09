@@ -1,9 +1,16 @@
 import {NgModule} from "@angular/core";
-import {MdCardModule, MdButtonModule, MdInputModule, MdProgressSpinnerModule} from "@angular/material";
+import {
+    MdCardModule,
+    MdButtonModule,
+    MdInputModule,
+    MdProgressSpinnerModule,
+    MdDialogModule
+} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { BrowserModule } from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
+import {ErrorInfoReportComponent} from "./components/errorReportComponent";
 
 const sharedModules: any[] = [
     MdCardModule,
@@ -13,12 +20,14 @@ const sharedModules: any[] = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdDialogModule
 ];
 
 @NgModule({
     imports: sharedModules,
-    exports: sharedModules
+    exports: sharedModules,
+    declarations: [ErrorInfoReportComponent]
 
 })
 export class MACommonModule {}

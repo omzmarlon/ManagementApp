@@ -10,6 +10,8 @@ import {MAHttp} from "../common/services/http";
 import {AuthenticationService} from "./authentication/services/authenticationService";
 import {SpinnerService} from "./spinners/services/spinnerService";
 import {SpinnerAnchor, SpinnerComponent} from "./spinners/components/spinnerComponent";
+import {ErrorDialogService} from "../common/services/errorDialogService";
+import {ErrorInfoReportComponent} from "../common/components/errorReportComponent";
 
 @NgModule({
     declarations: [AppContainerComponent, HomeComponent, AuthenticationComponent, SpinnerAnchor, SpinnerComponent],
@@ -20,8 +22,10 @@ import {SpinnerAnchor, SpinnerComponent} from "./spinners/components/spinnerComp
         AuthGuard,
         MAHttp, // MAHttp needs to be provided globally because it does error-handling for the entire application
         AuthenticationService,
-        SpinnerService
+        SpinnerService,
+        ErrorDialogService
     ],
-    entryComponents: [SpinnerComponent]
+    // An entry component is any component that Angular loads imperatively by type rather than by selector
+    entryComponents: [SpinnerComponent, ErrorInfoReportComponent]
 })
 export class AppModule {}

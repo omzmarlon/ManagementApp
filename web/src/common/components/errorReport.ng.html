@@ -1,0 +1,24 @@
+<div md-dialog-title class="report-header">
+    <p>Ooops! Something went wrong...</p>
+</div>
+<div md-dialog-content class="report-body">
+    <div>
+        <span class="error-item-name">Exception Code: </span>
+        <span>{{error.exceptionCode}}</span>
+    </div>
+    <div>
+        <span class="error-item-name">Status: </span>
+        <span>{{error.status}}</span>
+    </div>
+    <div>
+        <span class="error-item-name">Code: </span>
+        <span>{{error.code}}</span>
+    </div>
+    <div>
+        <span class="error-item-name">Message: </span>
+        <span>{{error.message}}</span>
+    </div>
+</div>
+<div md-dialog-actions class="report-actions">
+    <button md-button md-dialog-close>OK</button>
+</div>

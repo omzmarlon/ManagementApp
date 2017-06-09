@@ -49,12 +49,15 @@ export class AuthenticationComponent extends AbstractBaseComponent {
         this._spinnerService.showSpinner();
         if (this.canLogin()) {
             const subscription: Subscription =
-                this._authService.login(this._account.email.some(), this._account.password.some()).subscribe(
-                    () => {
-                        this._spinnerService.hideSpinner();
-                        this._router.navigate(["/"]);
-                    }
-                );
+                this._authService.login(this._account.email.some(), this._account.password.some())
+                    .finally(
+                        () => this._spinnerService.hideSpinner()
+                    )
+                    .subscribe(
+                        () => {
+                            this._router.navigate(["/"]);
+                        }
+                    );
             this.addSubscription(subscription);
         }
     }
