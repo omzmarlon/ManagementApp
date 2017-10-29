@@ -1,0 +1,48 @@
+syntax = "proto3";
+package com.managementapp.transfers;
+
+message QuizItemDTO {
+    int64 id = 1;
+    string body = 2;
+    string choices = 3;//json string [{index:0, choice:abc}, ...]
+    //ignore this field when students query for quiz item
+    string answers = 4;//json string [1,2,...]
+}
+
+message QuizDTO {
+    int64 id = 1;
+    string quizName = 2;
+    int32 score = 3;
+    repeated QuizItemDTO items = 4;
+
+    //When students query for current available quiz:
+    //valid interval start/end
+    int64 startAt = 5;
+    int64 endAt = 6;
+
+    //When tutor query for all quizzes
+    string createdBy = 7; //tutor name
+    int64 createdAt = 8; //when quiz was created
+
+    bool quizAvailable = 9;
+    bool alreadyAnswered = 10;
+}
+
+message CurrentStudentQuizDTO {
+    bool quizAvailable = 1;
+    bool alreadyAnswered = 2;
+    QuizDTO quiz = 3;
+}
+
+message StudentAnswerDTO {
+    int64 quizId = 1;
+    string studentAnswer = 2;
+}
+
+message GroupAssignmentDTO {
+    string groupName = 1;
+    int64 groupId = 2;
+    int64 startAt = 3;
+    int64 endAt = 4;
+    int64 assignedAt = 5;
+}

@@ -1,3 +1,4 @@
 <div class="quiz-container">
-    quiz container
+    <student-quiz-container *ngIf="!isTutor"></student-quiz-container>
+    <tutor-quiz-container *ngIf="isTutor"></tutor-quiz-container>
 </div>

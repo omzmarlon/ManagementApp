@@ -15,7 +15,7 @@ trait ProtobufUtil {
   }
 
   def protobufToJSON[M <: Message](content: M): String = {
-    JsonFormat.printer().print(content)
+    JsonFormat.printer().includingDefaultValueFields().preservingProtoFieldNames().print(content)
   }
 
 }

@@ -1,22 +1,37 @@
-import {Injectable} from "@angular/core";
+import {Injectable, NgZone} from "@angular/core";
 import {MAHttp} from "../../../common/services/http";
 import {Observable} from "rxjs/Rx";
 import {ManagementAppRoute} from "../../../common/util/routes";
 import {AccountDTO} from "../../../dto/Users";
-import * as Cookies from "js-cookie";
+import {CookieService} from "../../../common/services/cookieService";
 
 @Injectable()
 export class AuthenticationService {
-    private static USERNAME_COOKIE: string = "username";
 
-    constructor(private _http: MAHttp) {}
+    /**
+     * TODO:
+     * This file's subscribers need to handle errors otherwise the errors passed from my wrapper MAHttp
+     * would be out in the wild, which could leads to web app crash or unexpected behaviours
+     * */
+
+    constructor(
+        private _http: MAHttp,
+        private _cookieService: CookieService,
+        private _zone: NgZone
+    ) {}
 
     public isUserLoggedIn(): boolean {
-        return Cookies.get(AuthenticationService.USERNAME_COOKIE) !== undefined;
+        /*
+        * Cookies are changed after http requests. And Angular change detection does not expect this change.
+        * (eg. Last value of a field whose value pulled from cookies using a getter was "abc",
+        * but after a http request it's changed to "edf". When angular sees unexpected "edf" it throws exception)
+        * We need to tell angular that this change is expected by using zones
+        * */
+        return this._zone.run(() => this._cookieService.getUsername().isSome());
     }
 
     public getUsername(): string {
-        return Cookies.get(AuthenticationService.USERNAME_COOKIE);
+        return this._zone.run(() => this._cookieService.getUsername().orSome(""));
     }
 
     public login(email: string, password: string): Observable<any> {

@@ -8,3 +8,14 @@ case class StudentsWorkOnQuizes(
                                  startAt: Long,
                                  finishAt: Long
                                )
+/*
+* stuAnswer example:
+* [
+*   {
+*     itemId: 123,
+*     choice: 2
+*   },
+*   ...
+* ]
+*
+* */

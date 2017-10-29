@@ -1,32 +1,41 @@
-<div class="main">
-    <div spinner></div>
-    <nav>
-        <a class="nav-item" routerLink="/">ManagementApp</a>
-        <div class="nav-item">
-            <div *ngIf="isLoggedIn()">
-                <a routerLink="/profiles">Hello, {{username}}</a>
-                <button md-raised-button (click)="logout()">Logout!</button>
-            </div>
-            <button routerLink="/authentication" md-raised-button *ngIf="!isLoggedIn()">Login</button>
+<div spinner></div>
+<md-sidenav-container>
+    <md-sidenav #sidenav mode="over" class="ma-content-navigation">
+        <div class="navigation-section" routerLink="/" routerLinkActive="active" (click)="sidenav.toggle();">
+            <md-icon>home</md-icon>
+            <span>Home</span>
         </div>
-    </nav>
-    <div class="ma-app-container">
-        <div class="ma-content-navigation">
-            <div>
-                <a routerLink="/groups" routerLinkActive="active">Groups</a>
-            </div>
-
-            <div>
-                <a routerLink="/profiles" routerLinkActive="active">Your Profile</a>
-            </div>
-
-            <div>
-                <a routerLink="/quizzes" routerLinkActive="active">Quizzes</a>
-            </div>
+        <div class="navigation-section" routerLink="/groups" routerLinkActive="active" (click)="sidenav.toggle();loadingOnNavigation('/groups');">
+            <md-icon>people</md-icon>
+            <span>Groups</span>
         </div>
 
+        <div class="navigation-section" routerLink="/profiles" routerLinkActive="active" (click)="sidenav.toggle();loadingOnNavigation('/profiles');">
+            <md-icon>person</md-icon>
+            <span>Profile</span>
+        </div>
+
+        <div class="navigation-section" routerLink="/quizzes" routerLinkActive="active" (click)="sidenav.toggle();loadingOnNavigation('/quizzes');">
+            <md-icon>create</md-icon>
+            <span>Quizzes</span>
+        </div>
+    </md-sidenav>
+    <div class="main">
+        <nav>
+            <div class="nav-item">
+                <md-icon class="nav-icon" (click)="sidenav.toggle()">menu</md-icon>
+                <span class="nav-title">ManagementApp</span>
+            </div>
+            <div class="nav-item">
+                <div *ngIf="isLoggedIn()">
+                    <a routerLink="/profiles">Hello, {{username}}</a>
+                    <button md-raised-button (click)="logout()">Logout!</button>
+                </div>
+                <button routerLink="/authentication" md-raised-button *ngIf="!isLoggedIn()">Login</button>
+            </div>
+        </nav>
         <div class="ma-content-container">
             <router-outlet></router-outlet>
         </div>
     </div>
-</div>
+</md-sidenav-container>

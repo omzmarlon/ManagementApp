@@ -1,11 +1,11 @@
 import {Component, AfterViewInit, ViewChild} from "@angular/core";
 import {AuthenticationService} from "../../authentication/services/authenticationService";
-import * as jwt from "jwt-decode";
 import {SpinnerAnchor} from "../../spinners/components/spinnerComponent";
 import {SpinnerService} from "../../spinners/services/spinnerService";
 import {AbstractBaseComponent} from "../../../common/components/baseComponent";
 import {Subscription} from "rxjs/Rx";
-import * as Cookies from "@types/js-cookie";
+import {Router} from "@angular/router";
+import {InfoBarService} from "../../../common/services/infoBarService";
 
 @Component({
     selector: "management-app",
@@ -17,7 +17,9 @@ export class AppContainerComponent extends AbstractBaseComponent implements Afte
 
     constructor(
         private _authService: AuthenticationService,
-        private _spinnerService: SpinnerService
+        private _spinnerService: SpinnerService,
+        private _router: Router,
+        private _infoBarService: InfoBarService
     ) {
         super();
     }
@@ -44,6 +46,17 @@ export class AppContainerComponent extends AbstractBaseComponent implements Afte
     }
 
     public logout(): void {
-        this._authService.logout().subscribe();
+        this._authService.logout().subscribe(
+            () => {
+                this._router.navigate(["/"]);
+                this._infoBarService.notifyInfo("Successfully Logged out!");
+            }
+        );
+    }
+
+    public loadingOnNavigation(dest: string): void {
+        if (!this._router.url.includes(dest)) {
+            this._spinnerService.showSpinner();
+        }
     }
 }
