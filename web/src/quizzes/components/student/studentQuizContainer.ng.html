@@ -1,0 +1,17 @@
+<div class="student-quiz-container">
+    <empty-quiz *ngIf="!(quizExistsObs|async)"></empty-quiz>
+    <pre-quiz *ngIf="launchPreQuizScreenObs|async"></pre-quiz>
+    <student-quiz-item
+     *ngIf="launchQuizScreenObs|async"
+     [quizItem]="currentItemObs|async"
+     [quizName]="quizNameObs|async"
+     [quizLength]="quizLengthObs|async"
+     [currentIndex]="currentIndexObs|async"
+     [selectedChoice]="selectedChoicesObs|async"
+     (nextQuestion)="nextQuestion()"
+     (previousQuestion)="previousQuestion()"
+     (exit)="resetStudentQuizUsage()"
+     (choice)="handleChoice($event)"
+    >
+    </student-quiz-item>
+</div>

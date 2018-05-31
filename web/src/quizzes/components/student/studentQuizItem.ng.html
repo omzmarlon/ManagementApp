@@ -1,0 +1,50 @@
+<div class="student-quiz-item-container">
+    <md-card class="student-quiz-item">
+        <div class="student-quiz-item-title">
+            <md-card>{{quizTitle}}</md-card>
+        </div>
+        <div class="quiz-item-content">
+            <div class="quiz-item-body">
+                <md-card>
+                    {{quizItemBody}}
+                </md-card>
+            </div>
+            <div class="quiz-item-choices">
+                <md-chip-list class="mat-chip-list-stacked">
+                    <md-chip *ngFor="let c of quizItemChoices; let i = index;"
+                             [selected]="isSelected(i)"
+                             (click)="clickChoice(i)"
+                    >
+                    {{c.choice}}
+                    </md-chip>
+                </md-chip-list>
+
+            </div>
+            <div class="quiz-item-progress">
+                {{currentIndex+1}}/{{quizLength}}
+            </div>
+            <div class="submit-button" mdTooltip="Submit!" mdTooltipPosition="above">
+                <button md-fab>
+                    <md-icon>publish</md-icon>
+                </button>
+            </div>
+        </div>
+        <div class="quiz-item-actions">
+            <button
+             class="quiz-item-actions-button button-previous"
+             md-raised-button
+             (click)="previousQuestion()"
+             [disabled]="isFirstQuestion"
+            >
+                Previous
+            </button>
+            <button
+             class="quiz-item-actions-button button-next"
+             md-raised-button
+             (click)="nextQuestion()"
+             [disabled]="isLastQuestion">
+                Next
+            </button>
+        </div>
+    </md-card>
+</div>

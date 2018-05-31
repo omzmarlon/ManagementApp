@@ -12,7 +12,9 @@
         "variable-name": [true, "ban-keywords", "check-format", "allow-leading-underscore"],
         "no-console": false,
         "arrow-parens": false,
-        "max-classes-per-file": false
+        "max-classes-per-file": false,
+        "object-literal-shorthand": false,
+        "interface-name": false
     },
     "rulesDirectory": []
 }

@@ -1,14 +1,26 @@
 import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
 import {QuizContainerComponent} from "./components/quizContainerComponent";
-import {HttpModule} from "@angular/http";
 import {QuizRoutingModule} from "./quizRoutingModule";
+import {EmptyQuizComponent} from "./components/student/emptyQuizComponent";
+import {MACommonModule} from "../common/commonModule";
+import {StudentQuizContainerComponent} from "./components/student/studentQuizContainerComponent";
+import {TutorQuizContainerComponent} from "./components/tutor/tutorQuizContainerComponent";
+import {StudentPreQuizComponent} from "./components/student/studentPreQuizComponent";
+import {StudentQuizItemComponent} from "./components/student/studentQuizItemComponent";
 
 @NgModule({
-    imports: [CommonModule, FormsModule, HttpModule, QuizRoutingModule],
-    declarations: [QuizContainerComponent],
-    exports: [QuizContainerComponent],
+    imports: [
+        QuizRoutingModule,
+        MACommonModule
+    ],
+    declarations: [
+        QuizContainerComponent,
+        EmptyQuizComponent,
+        StudentPreQuizComponent,
+        StudentQuizItemComponent,
+        StudentQuizContainerComponent,
+        TutorQuizContainerComponent
+    ],
     providers: []
 })
 export class QuizModule {}

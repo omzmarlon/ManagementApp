@@ -4,9 +4,10 @@ import {FormsModule} from "@angular/forms";
 import {GroupContainerComponent} from "./components/groupContainerComponent";
 import {HttpModule} from "@angular/http";
 import {GroupRoutingModule} from "./groupRoutingModule";
+import {MACommonModule} from "../common/commonModule";
 
 @NgModule({
-    imports: [CommonModule, FormsModule, HttpModule, GroupRoutingModule],
+    imports: [CommonModule, FormsModule, HttpModule, GroupRoutingModule, MACommonModule],
     declarations: [GroupContainerComponent],
     exports: [GroupContainerComponent],
     providers: []

@@ -1,6 +1,6 @@
 import {OnDestroy} from "@angular/core";
 import {Subscription} from "rxjs/Rx";
-import * as _ from "lodash";
+import * as _ from "@types/lodash";
 
 export class AbstractBaseComponent implements OnDestroy {
     private _subscriptions: Subscription[];

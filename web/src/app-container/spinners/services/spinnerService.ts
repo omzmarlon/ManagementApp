@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject} from "rxjs/Rx";
+import {BehaviorSubject, Subscription} from "rxjs/Rx";
 
 @Injectable()
 export class SpinnerService {
@@ -11,5 +11,10 @@ export class SpinnerService {
 
     public hideSpinner(): void {
         this.control.next(false);
+    }
+
+    public hideSpinnerAndUnsubscribe(subs: Subscription): void {
+        this.control.next(false);
+        subs.unsubscribe();
     }
 }

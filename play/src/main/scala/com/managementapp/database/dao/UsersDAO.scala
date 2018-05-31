@@ -3,11 +3,13 @@ package com.managementapp.database.dao
 import com.google.inject.Inject
 import com.managementapp.database.models.Gender.Gender
 import com.managementapp.database.models.{Gender, Users}
+import com.managementapp.play.errors.base.exceptions.MAExceptionCode
+import com.managementapp.play.errors.common.exceptions.DefaultException
 import com.managementapp.services.common.ManagementAppDatabase
 import play.api.db.slick.DatabaseConfigProvider
 import slick.driver.MySQLDriver.api._
-import scala.concurrent.ExecutionContext.Implicits.global
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 class UsersTable(tag: Tag) extends Table[Users](tag, "USERS") {
@@ -38,7 +40,7 @@ class UsersDAO @Inject()(val configProvider: DatabaseConfigProvider) extends DAO
   @throws(classOf[Exception])
   override def add(user: Users): Future[Users] = {
     execute(users += user).map(_ => user).recover {
-      case ex: Exception => throw new Exception(ex.getCause.getMessage)
+      case ex: Exception => throw DefaultException(MAExceptionCode.MA00006, message=ex.getCause.getMessage)
     }
   }
 
